@@ -1,0 +1,34 @@
+{
+  "name": "dashboard-leankit-metric-extractor",
+  "version": "1.0.0",
+  "description": "A service to extract metrics from LeanKit and submit to the Team Dashboard",
+  "main": "extract-leadtime.js",
+  "dependencies": {
+    "dateformat": "^3.0.3",
+    "leankit-client": "^2.4.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {
+    "i": "^0.3.6",
+    "npm": "^6.12.0",
+    "yargs": "^14.2.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/awconstable/dashboard-leankit-metric-extractor.git"
+  },
+  "keywords": [
+    "leankit",
+    "leadtime",
+    "cycletime"
+  ],
+  "author": "Austen Constable",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/awconstable/dashboard-leankit-metric-extractor/issues"
+  },
+  "homepage": "https://github.com/awconstable/dashboard-leankit-metric-extractor#readme"
+}
