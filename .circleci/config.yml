@@ -48,8 +48,6 @@ jobs:
       - image: docker:18.06.0-ce-git
     steps:
       - checkout
-      - attach_workspace:
-          at: *working_directory
       - setup_remote_docker:
           docker_layer_caching: true 
       - restore_cache:
@@ -57,6 +55,8 @@ jobs:
             - v1-{{ .Branch }}
           paths:
             - /caches/app.tar
+      - attach_workspace:
+          at: *working_directory
       - run:
           name: Load Docker image layer cache
           command: |
