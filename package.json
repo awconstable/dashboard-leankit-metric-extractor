@@ -6,12 +6,12 @@
   "dependencies": {
     "dateformat": "^3.0.3",
     "leankit-client": "^2.4.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "yargs": "^14.2.0"
   },
   "devDependencies": {
     "i": "^0.3.6",
-    "npm": "^6.12.0",
-    "yargs": "^14.2.0"
+    "npm": "^6.12.0"
   },
   "scripts": {
     "start": "node extract-leadtime.js",
