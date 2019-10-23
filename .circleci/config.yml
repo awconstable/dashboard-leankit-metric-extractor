@@ -14,12 +14,15 @@ workflows:
             tags:
               only: /.*/
 
+working_directory: &working_directory
+                     ~/repo
+
 jobs:
   build:
     docker:
       - image: circleci/node:12.13.0
 
-    working_directory: ~/repo
+    working_directory: *working_directory
 
     steps:
       - checkout
@@ -34,13 +37,18 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+      - persist_to_workspace:
+          root: *working_directory
+          paths:
+            - node_modules
 
   publish-docker:
-    working_directory: /app
+    working_directory: *working_directory
     docker:
       - image: docker:18.06.0-ce-git
     steps:
-      - checkout
+      - attach_workspace:
+          at: *working_directory
       - setup_remote_docker:
           docker_layer_caching: true 
       - restore_cache:
