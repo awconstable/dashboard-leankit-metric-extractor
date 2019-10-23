@@ -21,12 +21,12 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
-            docker build --cache-from=app -t awconstable/dashboard-leankit-metric-extractor:0-SNAPSHOT .
+            docker build --cache-from=awconstable/dashboard-leankit-metric-extractor -t awconstable/dashboard-leankit-metric-extractor:0-SNAPSHOT .
       - run:
           name: Save Docker image layer cache
           command: |
             mkdir -p /caches
-            docker save -o /caches/app.tar app
+            docker save -o /caches/app.tar awconstable/dashboard-leankit-metric-extractor
       - save_cache:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
@@ -39,5 +39,6 @@ jobs:
             if [ -n "$CIRCLE_TAG" ]; then
               docker tag awconstable/dashboard-leankit-metric-extractor:0-SNAPSHOT awconstable/dashboard-leankit-metric-extractor:latest
               docker tag awconstable/dashboard-leankit-metric-extractor:0-SNAPSHOT awconstable/dashboard-leankit-metric-extractor:$CIRCLE_TAG
+              docker push awconstable/dashboard-leankit-metric-extractor:latest
               docker push awconstable/dashboard-leankit-metric-extractor:$CIRCLE_TAG
             fi
