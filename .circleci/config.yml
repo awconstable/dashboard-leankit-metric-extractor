@@ -4,12 +4,38 @@ workflows:
   build-deploy:
     jobs:
       - build:
+        filters:
+          tags:
+            only: /.*/ 
+      - publish-docker:
+          requires:
+            - build
           filters:
             tags:
               only: /.*/
 
 jobs:
   build:
+    docker:
+      - image: circleci/node:12.13.0
+
+    working_directory: ~/repo
+
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+
+      - run: npm install --production
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
+  publish-docker:
     working_directory: /app
     docker:
       - image: docker:18.06.0-ce-git
