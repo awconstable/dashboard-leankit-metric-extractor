@@ -34,6 +34,7 @@ jobs:
       - deploy:
           name: Push application Docker image
           command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS 
             docker push awconstable/dashboard-leankit-metric-extractor:0-SNAPSHOT
             
             if [ -n "$CIRCLE_TAG" ]; then
