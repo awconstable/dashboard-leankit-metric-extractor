@@ -1,4 +1,13 @@
 version: 2
+
+workflows:
+  build-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+
 jobs:
   build:
     working_directory: /app
