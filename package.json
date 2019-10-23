@@ -14,6 +14,7 @@
     "yargs": "^14.2.0"
   },
   "scripts": {
+    "start": "node extract-leadtime.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

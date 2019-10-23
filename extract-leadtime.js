@@ -3,6 +3,7 @@ const fetch = require('node-fetch');
 const dateFormat = require('dateformat');
 
 const argv = require('yargs')
+.env('DASHBOARD')
 .option('ts_url', { 
     describe:'Specify the Team Service URL'
 })

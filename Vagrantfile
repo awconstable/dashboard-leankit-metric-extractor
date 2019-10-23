@@ -19,7 +19,10 @@ Vagrant.configure(2) do |config|
     sudo apt-get update
     sudo apt-get -y upgrade
 
-    sudo apt-get install -y git node npm
+    sudo apt-get install -y git
+
+    curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+    sudo apt-get install -y nodejs
 
     sudo apt-get -y install \
         apt-transport-https \
