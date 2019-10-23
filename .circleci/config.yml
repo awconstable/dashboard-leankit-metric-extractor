@@ -47,6 +47,7 @@ jobs:
     docker:
       - image: docker:18.06.0-ce-git
     steps:
+      - checkout
       - attach_workspace:
           at: *working_directory
       - setup_remote_docker:
