@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fetch = require('node-fetch');
 const dateFormat = require('dateformat');
+const leankitUrl = require('./leankit-url');
 
 const argv = require('yargs')
 .env('DASHBOARD')
@@ -58,14 +59,13 @@ function processTeams(teams){
     }
 }
 
-function extractBoardIdFromUrl(boardUrl){
-    var regex = '^.*board\/(.*)';
-    return boardUrl.match(regex)[1];
-}
-
 function getBoardMetrics(boardUrl, teamId){
 
-    var boardId = extractBoardIdFromUrl(boardUrl);
+    var boardId = leankitUrl.boardId(boardUrl);
+
+    if(boardId === ""){
+        return;
+    }
 
     const query = {
         board: boardId,

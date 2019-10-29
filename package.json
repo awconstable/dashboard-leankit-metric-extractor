@@ -10,12 +10,14 @@
     "yargs": "^14.2.0"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
     "i": "^0.3.6",
+    "mocha": "^6.2.2",
     "npm": "^6.12.0"
   },
   "scripts": {
     "start": "node extract-leadtime.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
