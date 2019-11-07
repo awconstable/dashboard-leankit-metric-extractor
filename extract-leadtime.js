@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 require('fetch-with-proxy');
-const dateFormat = require('dateformat');
-const leankitUrl = require('./leankit-url');
+const ReportingDate = require('./reporting-date');
+const LeankitUrl = require('./leankit-url');
 
 const argv = require('yargs')
 .env('DASHBOARD')
@@ -61,7 +61,7 @@ function processTeams(teams){
 
 function getBoardMetrics(boardUrl, teamId){
 
-    var boardId = leankitUrl.boardId(boardUrl);
+    var boardId = LeankitUrl.boardId(boardUrl);
 
     if(boardId === ""){
         return;
@@ -95,21 +95,9 @@ function processResponse(teamId, response){
     submitMetricToDashboard(teamId, "cycletime", metrics.averageCycleTime);
 }
 
-function getReportingDate(){
-    var rawReportingDate = new Date();
-    rawReportingDate.setTime(Date.parse(argv.month));
-    rawReportingDate.setDate(1);
-
-    var reportingDate = new Date(rawReportingDate.setMonth(rawReportingDate.getMonth()+1));
-
-    reportingDate.setDate(0);
-
-    return dateFormat(reportingDate, "yyyy-mm-dd");
-}
-
 function submitMetricToDashboard(teamId, metricId, value){
 
-    var reportingDate = getReportingDate();
+    var reportingDate = ReportingDate.reportingDate(argv.month);
 
     fetch(argv.td_url + "/api/metrics/" + teamId + "/" + reportingDate, { 
         method: 'POST', 
