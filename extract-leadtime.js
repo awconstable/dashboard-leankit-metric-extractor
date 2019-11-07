@@ -124,6 +124,7 @@ function processCards(cards) {
     var totalLeadTime = 0;
     var totalCycleTime = 0;
     var averageLeadTime = 0;
+    var averageCycleTime = 0;
     var cardCount = 0;
 
     if(cards.length == 0){
