@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const fetch = require('fetch-with-proxy');
+require('fetch-with-proxy');
 const dateFormat = require('dateformat');
 const leankitUrl = require('./leankit-url');
 

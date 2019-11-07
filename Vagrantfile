@@ -50,6 +50,4 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "Copy user's git config", type:'file', source: '~/.gitconfig', destination: '.gitconfig'
 
-  config.vm.network "forwarded_port", guest: 80, host: 80, host_ip: "0.0.0.0", id: "nginx"
-  config.vm.network "forwarded_port", guest: 8080, host: 8080, host_ip: "0.0.0.0", id: "spring_boot"
 end
