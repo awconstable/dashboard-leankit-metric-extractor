@@ -126,6 +126,10 @@ function processCards(cards) {
     var averageLeadTime = 0;
     var cardCount = 0;
 
+    if(cards.length == 0){
+        return { cardCount: cardCount, averageLeadTime: averageLeadTime, averageCycleTime: averageCycleTime };
+    }
+
     for(i = 0; i < cards.length; i++){
         var stats = processCard(cards[i]);
 
