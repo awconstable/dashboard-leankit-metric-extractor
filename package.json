@@ -15,7 +15,7 @@
     "chai": "^4.2.0",
     "i": "^0.3.6",
     "mocha": "^6.2.2",
-    "npm": "^6.13.4"
+    "npm": "^6.14.6"
   },
   "scripts": {
     "start": "node extract-leadtime.js",
