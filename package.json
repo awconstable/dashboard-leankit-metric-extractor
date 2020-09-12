@@ -8,7 +8,7 @@
     "fetch-with-proxy": "^1.1.0",
     "isomorphic-fetch": "^2.2.1",
     "leankit-client": "^2.4.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "yargs": "^14.2.0"
   },
   "devDependencies": {
